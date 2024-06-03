@@ -14,16 +14,22 @@ body {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border-radius: 5px;
+    text-align: center; /* Center align text and elements inside the container */
+}
+
+.logo {
+    max-width: 150px;
+    margin-bottom: 20px;
 }
 
 h1 {
-    text-align: center;
     margin-bottom: 20px;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    align-items: center; /* Center align form elements */
 }
 
 label {
@@ -37,15 +43,22 @@ input, textarea, button {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+    width: 100%; /* Make input elements take full width */
 }
 
 input[type="radio"] {
     display: none;
 }
 
+.emoji-rating {
+    display: flex;
+    justify-content: center; /* Center align emoji labels */
+}
+
 .emoji-rating label {
     font-size: 30px;
     cursor: pointer;
+    margin: 0 10px; /* Add space between emojis */
 }
 
 .emoji-rating input[type="radio"]:checked + label {
@@ -57,6 +70,7 @@ button {
     color: white;
     cursor: pointer;
     border: none;
+    width: auto; /* Allow button to adjust to content size */
 }
 
 button:hover {
