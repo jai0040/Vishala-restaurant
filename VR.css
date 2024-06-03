@@ -4,32 +4,37 @@ body {
     padding: 0;
     background: url('background.jpg') no-repeat center center fixed;
     background-size: cover;
+    color: white; /* Set the default font color to white */
 }
 
 .container {
     width: 100%;
     max-width: 600px;
     margin: 50px auto;
-    background-color: rgba(255, 255, 255, 0.9); /* Make the background slightly transparent */
+    /*background-color: rgba(0, 0, 0, 0.7); /* Make the background slightly transparent and darker for better contrast */
     padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border-radius: 5px;
-    text-align: center; /* Center align text and elements inside the container */
+    position: relative;
 }
 
 .logo {
-    max-width: 150px;
-    margin-bottom: 20px;
+    max-width: 100px; /* Adjust the size of the logo as needed */
+    display: block;
+    position: absolute; /* Absolute positioning for the logo */
+    top: 10px; /* Adjust top position */
+    left: 10px; /* Adjust left position */
 }
 
 h1 {
+    text-align: center;
     margin-bottom: 20px;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center align form elements */
+    margin-top: 50px; /* Add margin to account for logo */
 }
 
 label {
@@ -44,6 +49,7 @@ input, textarea, button {
     border-radius: 4px;
     font-size: 16px;
     width: 100%; /* Make input elements take full width */
+    color: black; /* Set text color inside input and textarea to black */
 }
 
 input[type="radio"] {
@@ -62,7 +68,7 @@ input[type="radio"] {
 }
 
 .emoji-rating input[type="radio"]:checked + label {
-    outline: 2px solid #000;
+    outline: 2px solid #fff; /* Change outline color to white */
 }
 
 button {
