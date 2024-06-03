@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback Form</h1>
+        <form id="feedback-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label>Rating:</label>
+            <div class="emoji-rating">
+                <input type="radio" id="sad" name="rating" value="Sad" required>
+                <label for="sad">😞</label>
+                <input type="radio" id="neutral" name="rating" value="Neutral">
+                <label for="neutral">😐</label>
+                <input type="radio" id="happy" name="rating" value="Happy">
+                <label for="happy">😊</label>
+                <input type="radio" id="very-happy" name="rating" value="Very Happy">
+                <label for="very-happy">😁</label>
+                <input type="radio" id="ecstatic" name="rating" value="Ecstatic">
+                <label for="ecstatic">😍</label>
+            </div>
+
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
