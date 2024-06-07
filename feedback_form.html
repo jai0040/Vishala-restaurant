@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <style>
+        /* Your CSS styles */
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <!-- Slideshow images -->
+    </div>
+    <div class="form-box">
+        <div class="container">
+            <!-- Form header -->
+        </div>
+        <!-- Form content -->
+    </div>
+
+    <!-- JavaScript to handle success message -->
+    <script>
+        // Get the URL parameters
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        // Check if status parameter is present and has value 'success'
+        if (urlParams.has('status') && urlParams.get('status') === 'success') {
+            // Show success message
+            alert('Thank you for your feedback!'); // You can use any other method to show the message
+        }
+    </script>
+</body>
+</html>
