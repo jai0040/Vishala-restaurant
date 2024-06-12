@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishalla | Feedback Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <style>
+        body {
+            font-family: Copperplate, Papyrus, fantasy;
+            font-weight: bold;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            position: relative;
+            height: 100vh;
+        }
+
+        .slideshow-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .slideshow-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .active {
+            opacity: 1 !important;
+        }
+
+        .form-box {
+            width: 60%;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .header .text-left {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            text-align: left;
+            flex: 1;
+        }
+
+        .header img {
+            width: 100px;
+            margin-left: 20px;
+        }
+
+        .header .text-right {
+            text-align: right;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .radio-group {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .radio-group input[type="radio"] {
+            display: none;
+        }
+
+        .radio-group label {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        .radio-group input[type="radio"]:checked + label {
+            transform: scale(1.2) rotate(10deg);
+            color: #ff9800;
+        }
+
+        .radio-group label:hover {
+            transform: scale(1.1);
+            color: #ff9800;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            transition: opacity 1s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .form-box {
+                width: 80%;
+                padding: 15px;
+            }
+
+            .header .text-left {
+                font-size: 16px;
+            }
+
+            label {
+                margin-bottom: 8px;
+            }
+
+            input[type="text"], input[type="email"], input[type="tel"], textarea {
+                padding: 8px;
+            }
+
+            button[type="submit"] {
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-box {
+                width: 70%;
+                margin-right: 26px;
+                padding: 10px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header img {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+
+            .header .text-left {
+                font-size: 14px;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            label {
+                font-size: 14px;
+                margin-bottom: 6px;
+            }
+
+            input[type="text"], input[type="email"], input[type="tel"], textarea {
+                font-size: 14px;
+                padding: 6px;
+            }
+
+            button[type="submit"] {
+                padding: 6px 12px;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <img src="IMG1.png" alt="Background 1" class="active">
+        <img src="IMG2.png" alt="Background 2">
+        <img src="IMG3.png" alt="Background 3"> 
+    </div>
+    <div class="form-box">
+        <div class="container">
+            <div class="header">
+                <div class="text-left">
+                    <p>We value your opinion! <br>Your experience with us to help us serve you better.</p>
+                </div>
+                <img src="logo.png" alt="Logo" class="logo">
+            </div>
+        </div>
+        <br>
+        <div class="textup">
+            <i class="fa fa-solid fa-clock"></i>
+            It only takes two minutes!!
+        </div>
+        <form action="process_form.php" method="POST" onsubmit="return validateForm()">
+            <label for="uname">
+                <i class="fa fa-solid fa-user"></i>
+                Name
+            </label>
+            <input type="text" id="uname" name="uname" required>
+
+            <label for="phone">
+                <i class="fa-solid fa-phone"></i>
+                Phone No
+            </label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label>
+                <i class="fa-solid fa-face-smile"></i>
+                How would you rate our service?
+            </label>
+            <div class="radio-group">
+                <input type="radio" id="sad" name="rating" value="1" required>
+                <label for="sad">😞</label>
+                <input type="radio" id="neutral" name="rating" value="2">
+                <label for="neutral">😐</label>
+                <input type="radio" id="happy" name="rating" value="3">
+                <label for="happy">😊</label>
+                <input type="radio" id="very-happy" name="rating" value="4">
+                <label for="very-happy">😁</label>
+                <input type="radio" id="ecstatic" name="rating" value="5">
+                <label for="ecstatic">😍</label>
+            </div>
+
+            <label for="msg">
+                <i class="fa-solid fa-comments" style="margin-right: 3px;"></i>
+                Write your Suggestions:
+            </label>
+            <textarea id="msg" name="msg" rows="4" cols="10" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Your JavaScript code here -->
+    <script>
+        function validateForm() {
+            var phoneInput = document.getElementById('phone');
+            var phoneValue = phoneInput.value.trim();
+
+            // Check if phone number contains exactly 10 digits
+            if (phoneValue.length !== 10 || isNaN(phoneValue)) {
+                alert('Please enter a valid 10-digit phone number.');
+                phoneInput.focus();
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission
+        }
+
+        const slides = document.querySelectorAll('.slideshow-container img');
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        let currentIndex = 0;
+
+        function showNextSlide() {
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add('active');
+        }
+
+        if (urlParams.has('status') && urlParams.get('status') === 'success') {
+            function showPopup(message) {
+                var popup = document.createElement('div');
+                popup.className = 'popup';
+                popup.textContent = message;
+                document.body.appendChild(popup);
+
+                setTimeout(function() {
+                    popup.style.opacity = '0';
+                    setTimeout(function() {
+                        document.body.removeChild(popup);
+                    }, 1000);
+                }, 2000);
+            }
+
+            showPopup('Thank you for your feedback!');
+            // Clear form data
+            document.getElementById('uname').value = '';
+            document.getElementById('phone').value = '';
+            document.querySelector('input[name="rating"]:checked').checked = false;
+            document.getElementById('msg').value = '';
+        }
+
+        setInterval(showNextSlide, 3000);
+    </script>
+
+
+    <!--footer-->
+    
+<footer class="footer-distributed">
+
+            <div class="footer-left">
+                <img src="logo.png" alt="Logo" class="logo">
+                <!--<h3>Company<span>logo</span></h3>
+
+                <p class="footer-links">
+                    <a href="#" class="link-1">Home</a>
+                    
+                    <a href="#">Blog</a>
+                
+                    <a href="#">Pricing</a>
+                
+                    <a href="#">About</a>
+                    
+                    <a href="#">Faq</a>
+                    
+                    <a href="#">Contact</a>
+                </p>-->
+
+                <p class="footer-company-name">Design and Develop by </p>
+            </div>
+
+            <div class="footer-center">
+
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>Vishalla restaurant, Opp. APMC Market Vishala, Circle, Vasna, Ahmedabad, Gujarat 380055</span> </p>
+
+
+                </div>
+
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+91-79-26602422</p>
+                    <p>+91-79-26600919</p>
+                    <p>+91-8200543694</p>
+
+                </div>
+
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="booking@vishalla.com">booking@vishalla.com</a></p>
+                </div>
+<div class="footer-icons">
+
+                    
+
+                </div>
+            </div>
+
+            <div class="footer-`">
+
+
+
+                <div class="footer-icons">
+
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+
+                </div>
+
+            </div>
+
+        </footer>
+</body>
+</html>
