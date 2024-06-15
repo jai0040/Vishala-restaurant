@@ -31,13 +31,13 @@
             </thead>
             <tbody>
                 <?php
-                $servername = "localhost";
-                $username = "root"; // Change this to your database username
-                $password = ""; // Change this to your database password
-                $dbname = "feedback"; // Change this to your database name
+                $servername = "localhost"; 
+                $username = "id22175132_root";
+                $password = "Patel@2001"; 
+                $database = "id22175132_localhost"; 
 
                 // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
+                $conn = new mysqli($servername, $username, $password, $database);
 
                 // Check connection
                 if ($conn->connect_error) {
@@ -87,7 +87,7 @@
                     const table = document.getElementById('feedback-table');
                     const rows = table.querySelectorAll('tr');
 
-                    const colWidths = [20, 40, 40, 20, 80]; // Widths of each column
+                    const colWidths = [20, 45, 40, 15, 75]; // Widths of each column
 
                     rows.forEach(function (rowElement, rowIndex) {
                         const cols = rowElement.querySelectorAll('th, td');

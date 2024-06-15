@@ -1,9 +1,8 @@
 <?php
-// Database configuration
-$servername = "localhost"; // Change this to your database host
-$username = "root"; // Change this to your database username
-$password = ""; // Change this to your database password
-$database = "feedback"; // Change this to your database name
+$servername = "localhost"; 
+$username = "id22175132_root";
+$password = "Patel@2001"; 
+$database = "id22175132_localhost"; 
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
