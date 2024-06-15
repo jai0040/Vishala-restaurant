@@ -3,45 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vishalla Restaurant</title>
-    <link rel="stylesheet" href="VR.css">
+    <title>Vishalla | Feedback Form</title>
+
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <style>
+        /* Add your CSS styles here */
+        .footer-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .text-container {
+            flex: 1;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+        .image-container {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+        .text-container p {
+            font-family: cursive;
+            width: 100%;
+            max-width: 820px;
+        }
+        .footer-container {
+            padding: 20px;
+        }
+        .footer {
+            background-color: #a58556;
+        }
+        @media only screen and (max-width: 768px) {
+            .footer-section {
+                flex-direction: column;
+            }
+            .text-container {
+                margin-right: 0;
+            }
+            .image-container {
+                margin-top: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <img src="logo.png" alt="Logo" class="logo">
-        <h1>Feedback Form</h1>
-        <form id="feedback-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="phone">Phone Number:</label>
+    <div class="slideshow-container">
+        <img src="IMG1.png" alt="Background 1" class="active">
+        <img src="IMG2.png" alt="Background 2">
+        <img src="IMG3.png" alt="Background 3"> 
+    </div>
+    <div class="form-box">
+        <div class="container">
+            <div class="header">
+                <div class="text-left">
+                    <p>We value your opinion! Your experience with us to help us serve you better.</p>
+                </div>
+                <img src="logo.png" alt="Logo" class="logo">
+            </div>
+        </div>
+        <br>
+        <div class="textup">
+            <i class="fa fa-solid fa-clock"></i>
+            It only takes two minutes!!
+        </div>
+        
+
+        <form action="process_form.php" method="POST" onsubmit="return validateForm()">
+            <label for="uname">
+                <i class="fa fa-solid fa-user"></i>
+                Name
+            </label>
+            <input type="text" id="uname" name="uname" required>
+
+            <label for="phone">
+                <i class="fa-solid fa-phone"></i>
+                Phone No
+            </label>
             <input type="tel" id="phone" name="phone" required>
 
-            <label>Rating:</label>
-            <div class="emoji-rating">
-                <input type="radio" id="sad" name="rating" value="Sad" required>
+            <label>
+                <i class="fa-solid fa-face-smile"></i>
+                How would you rate our service?
+            </label>
+            <div class="radio-group">
+                <input type="radio" id="sad" name="rating" value="1" required>
                 <label for="sad">😞</label>
-                <input type="radio" id="neutral" name="rating" value="Neutral">
+                <input type="radio" id="neutral" name="rating" value="2">
                 <label for="neutral">😐</label>
-                <input type="radio" id="happy" name="rating" value="Happy">
+                <input type="radio" id="happy" name="rating" value="3">
                 <label for="happy">😊</label>
-                <input type="radio" id="very-happy" name="rating" value="Very Happy">
+                <input type="radio" id="very-happy" name="rating" value="4">
                 <label for="very-happy">😁</label>
-                <input type="radio" id="ecstatic" name="rating" value="Ecstatic">
+                <input type="radio" id="ecstatic" name="rating" value="5">
                 <label for="ecstatic">😍</label>
             </div>
 
-            <label for="feedback">Feedback:</label>
-            <textarea id="feedback" name="feedback" rows="4" required></textarea>
+            <label for="msg">
+                <i class="fa-solid fa-comments" style="margin-right: 3px;"></i>
+                Write your Suggestions:
+            </label>
+            <textarea id="msg" name="msg" rows="4" cols="10" required></textarea>
 
             <button type="submit">Submit</button>
+            
         </form>
     </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <div class="text-container">
+                        <h2>About Us</h2>
+                        <p>Surendra C. Patel, a civil engineer and interior designer, is the designer & visualizer of Vishalla. Since 1965, he has been polishing his skills in creating environs perfect for both the occasion and the people they are made for, both permanent and temporary. Three years after setting up Vishalla, he tried to locate large utensils to render to the restaurant a more ethnic touch. He came across a place in Saurashtra where old utensils were being melted and sold for the brass value. Having the sensitive heart of a designer, the scene broke his heart. He resolved to put in substantial efforts to save and preserve the traditional beauty of utensils. He therefore created a one-of-its-kind museum of old utensils, which is now a public charitable trust, and named it Vechaar.</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="sir.png" alt="About Us Image" style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+   <script>
+    function validateForm() {
+        var phoneInput = document.getElementById('phone');
+        var phoneValue = phoneInput.value.trim();
 
-    <script src="vr.js"></script>
+        // Check if phone number contains exactly 10 digits
+        if (phoneValue.length !== 10 || isNaN(phoneValue)) {
+            alert('Please enter a valid 10-digit phone number.');
+            phoneInput.focus();
+            return false; // Prevent form submission
+        }
+
+        return true; // Allow form submission
+    }
+
+    const slides = document.querySelectorAll('.slideshow-container img');
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    let currentIndex = 0;
+
+    function showNextSlide() {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+    }
+
+    if (urlParams.has('status') && urlParams.get('status') === 'success') {
+        function showPopup(message) {
+            var popup = document.createElement('div');
+            popup.className = 'popup';
+            popup.textContent = message;
+            document.body.appendChild(popup);
+
+            setTimeout(function() {
+                popup.style.opacity = '0';
+                setTimeout(function() {
+                    document.body.removeChild(popup);
+                }, 1000);
+            }, 2000);
+        }
+
+        showPopup('Thank you for your feedback!');
+        // Clear form data
+        document.getElementById('uname').value = '';
+        document.getElementById('phone').value = '';
+        document.querySelector('input[name="rating"]:checked').checked = false;
+        document.getElementById('msg').value = '';
+    }
+
+    setInterval(showNextSlide, 3000);
+</script>
+
 </body>
 </html>
-
-
-
-<body>
